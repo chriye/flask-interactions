@@ -52,9 +52,9 @@ def view():
 
 
 
-@app.route('/hello/<name>/')
-def hello_name(name):
-    return render_template('hello.html', name=name)
+# @app.route('/hello/<name>/')
+# def hello_name(name):
+#     return render_template('hello.html', name=name)
 
 # Page with form
 
@@ -71,15 +71,15 @@ def ask():
 # File uploads and interfacing with complex Python
 # basic version
 
-@app.route('/submit-basic/', methods=['POST', 'GET'])
-def submit_basic():
-    if request.method == 'GET':
-        return render_template('submit-basic.html')
-    else:
-        try:
-            return render_template('submit-basic.html', thanks = True)
-        except:
-            return render_template('submit-basic.html', error=True)
+# @app.route('/submit-basic/', methods=['POST', 'GET'])
+# def submit_basic():
+#     if request.method == 'GET':
+#         return render_template('submit-basic.html')
+#     else:
+#         try:
+#             return render_template('submit-basic.html', thanks = True)
+#         except:
+#             return render_template('submit-basic.html', error=True)
 
 # nontrivial version: makes a prediction and shows a viz
 @app.route('/submit-advanced/', methods=['POST', 'GET'])
