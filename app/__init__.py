@@ -40,9 +40,9 @@ def main():
 
 # Show url matching
 
-@app.route('/hello/')
-def hello():
-    return render_template('hello.html')
+# @app.route('/hello/')
+# def hello():
+#     return render_template('hello.html')
 
 
 
