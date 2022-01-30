@@ -44,6 +44,14 @@ def main():
 def hello():
     return render_template('hello.html')
 
+
+
+@app.route('/view/')
+def view():
+    return render_template('view.html')
+
+
+
 @app.route('/hello/<name>/')
 def hello_name(name):
     return render_template('hello.html', name=name)

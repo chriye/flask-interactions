@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}View  messages{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+{% if message %}
+  Thanks for submitting messages!
+{% else %}
+  There're no messages!
+{% endif %}
+{% endblock %}
