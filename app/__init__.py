@@ -4,7 +4,9 @@
 
 from flask import Flask, g, render_template, request
 
-from app import insert_message
+#execfile("/PIC16B/flask-interactions/app/app.py")
+# import os
+# os.system("/PIC16B/flask-interactions/app/app.py")
 
 import sklearn as sk
 import matplotlib.pyplot as plt
@@ -90,7 +92,7 @@ def submit():
         return render_template('submit.html')
     else:
         try:
-            insert_message(request)
-            return render_template('submit.html')
+            # insert_message(request)
+            return render_template('submit.html', handle = request.form['handle'], message = request.form['message'])
         except:
-            return render_template('submit.html', error=True)
+            return render_template('submit.html', error = True)

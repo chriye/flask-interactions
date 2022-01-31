@@ -16,12 +16,15 @@
       <br>
       <input type="submit" value="Submit form">
   </form>
+
   {% if handle %}
-  <br>
-  {% if message %}
-  <b>Thanks for submitting {{message}}</b>
+  <b>Hi {{handle}},</b>
+  <b>Thanks for submitting "{{message}}"</b>
+  {% endif %}
+
+
   {% if error %}
   <b>There're no messages</b>
   {% endif %}
-  {% endif %}
+
 {% endblock %}
