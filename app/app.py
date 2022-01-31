@@ -30,8 +30,8 @@ def insert_message(request):
     input  : a request form that has user input information
     output : nothing
 
-    Add a new row of data into the messages table. Each row contains
-    id, handle, and message. 
+    Add a new row of data into the messages table by SQL command. 
+    Each row contains id, handle, and message. 
     id      : the current row number of table add one.
     handle  : the handle given by user
     message : the message given by user
@@ -51,5 +51,7 @@ def insert_message(request):
         VALUES ({0}, {1}, {2});
         """.format(id, request.form["handle"], request.form["message"])
     cursor.execute(cmd)
+    # run commit to ensure a new row has been saved into messages
     g.message_db.commit()
     g.message_db.close()
+
