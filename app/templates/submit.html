@@ -20,7 +20,7 @@
   <br>
   {% if message %}
   <b>Thanks for submitting {{message}}</b>
-  {% else %}
+  {% if error %}
   <b>There're no messages</b>
   {% endif %}
   {% endif %}

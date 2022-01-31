@@ -4,6 +4,8 @@
 
 from flask import Flask, g, render_template, request
 
+from app import insert_message
+
 import sklearn as sk
 import matplotlib.pyplot as plt
 import numpy as np
@@ -88,36 +90,7 @@ def submit():
         return render_template('submit.html')
     else:
         try:
-            # retrieve the image
-            img = request.files['image']
-            img = np.loadtxt(img)
-            
-            # reshape into appropriate format for prediction
-            x = img.reshape(1, 64)
-            
-            # load up a pre-trained model and get a prediction
-            model = pickle.load(open("mnist-model/model.pkl", 'rb'))
-            d = model.predict(x)[0]
-
-            # plot the image itself
-            fig = Figure(figsize = (3, 3))
-            ax = fig.add_subplot(1, 1, 1,)
-            ax.imshow(img, cmap = "binary")
-            ax.axis("off")
-            
-            # in order to show the plot on flask, we need to do a few tricks
-            # Convert plot to PNG image
-            # need to: 
-            # import io 
-            # import base64 
-            pngImage = io.BytesIO()
-            FigureCanvas(fig).print_png(pngImage)
-            
-            # Encode PNG image to base64 string
-            pngImageB64String = "data:image/png;base64,"
-            pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
-            
-            # finally we can render the template with the prediction and image
-            return render_template('submit.html', digit=d, image=pngImageB64String)
+            insert_message(request)
+            return render_template('submit.html')
         except:
             return render_template('submit.html', error=True)
