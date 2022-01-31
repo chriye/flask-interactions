@@ -158,7 +158,9 @@ def submit():
     else:
         try:
             insert_message(request)
-            return render_template('submit.html', thanks = True)
+            return render_template('submit.html', thanks = True,
+                                handle = request.form['handle'],
+                                message = request.form['message'])
         except:
             return render_template('submit.html', error = True)
 
