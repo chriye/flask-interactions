@@ -58,15 +58,15 @@ def view():
 
 # Page with form
 
-@app.route('/ask/', methods=['POST', 'GET'])
-def ask():
-    if request.method == 'GET':
-        return render_template('ask.html')
-    else:
-        try:
-            return render_template('ask.html', name=request.form['name'], student=request.form['student'])
-        except:
-            return render_template('ask.html')
+# @app.route('/ask/', methods=['POST', 'GET'])
+# def ask():
+#     if request.method == 'GET':
+#         return render_template('submit.html')
+#     else:
+#         try:
+#             return render_template('ask.html', name=request.form['name'], student=request.form['student'])
+#         except:
+#             return render_template('ask.html')
 
 # File uploads and interfacing with complex Python
 # basic version
