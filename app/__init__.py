@@ -166,7 +166,22 @@ def submit():
 
 
 
-# def random_messages(n):
-#     """
+def random_messages(n):
+    """
+    input  : an integer n
+    output : random n messages from message_db or fewer if n is
+    greater than the total messages that the database has.
 
-#     """
+    return a collection of n random messages if possible
+    """
+    # connect the database
+    g.message_db = get_auth_db()
+    cursor = g.message_db.cursor()
+    cmd = \
+    """
+    SELECT * FROM messages ORDER BY RANDOM() LIMIT {0};
+    """.format(n)
+    cursor.execute(cmd)
+    col = cursor.fetchall()
+    g.message_db.close()
+    return col; 
