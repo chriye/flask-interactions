@@ -29,7 +29,7 @@ def view():
 
 
 
-def get_auth_db():
+def get_message_db():
     """
     input  : nothing
     output : a database with a message table
@@ -67,7 +67,7 @@ def insert_message(request):
     """
 
     # connect the database
-    g.message_db = get_auth_db()
+    g.message_db = get_message_db()
     cursor = g.message_db.cursor()
     # get the current row number in table messages
     new_cursor = cursor.execute("SELECT * FROM messages;")
@@ -110,7 +110,7 @@ def random_messages(n):
     return a collection of n random messages if possible
     """
     # connect the database
-    g.message_db = get_auth_db()
+    g.message_db = get_message_db()
     cursor = g.message_db.cursor()
     cmd = \
     """
