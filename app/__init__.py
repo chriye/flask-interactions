@@ -60,8 +60,17 @@ def main():
 
 @app.route('/view/')
 def view():
-    return render_template('view.html')
+    """
+    input  : nothing
+    output : a webpage that can view some random messages with its handles
 
+    Return 5 mesages with handles if possible
+    """
+    try:
+        col = random_messages(5)
+        return render_template('view.html', fun = True, col = col)
+    except:
+        return render_template('view.html', error = True)
 
 
 # @app.route('/hello/<name>/')
@@ -185,3 +194,4 @@ def random_messages(n):
     col = cursor.fetchall()
     g.message_db.close()
     return col; 
+

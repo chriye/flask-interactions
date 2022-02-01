@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}View  messages{% endblock %}</h1>
+  <h1>{% block title %}Some Cool Messages{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-{% if message %}
-  Thanks for submitting messages!
-{% else %}
-  There're no messages!
+
+
+{% for i in col %}
+  {{i[1]}}
+  <br>
+  - "{{i[2]}}""
+  <br>
+{% endfor %}
+
+
+{% if error %}
+  There's an error!
 {% endif %}
+
 {% endblock %}
 
