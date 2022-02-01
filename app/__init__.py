@@ -4,58 +4,13 @@
 
 from flask import Flask, g, render_template, request
 import sqlite3
-#execfile("/PIC16B/flask-interactions/app/app.py")
-# import os
-# os.system("/PIC16B/flask-interactions/app/app1.py")
-
-#from app1 import insert_message
-
-
-# import sys
-# sys.path.insert(0, '/Desktop/PIC16B/flask-interactions')
-# from app1 import insert_message
-
-
-import sklearn as sk
-import matplotlib.pyplot as plt
-import numpy as np
-import pickle
-
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-
-import io
-import base64
-
-
-# Create web app, run with flask run
-# (set "FLASK_ENV" variable to "development" first!!!)
 
 app = Flask(__name__)
 
-# Create main page (fancy)
 
 @app.route('/')
-
-# def main():
-#     return render_template("main.html")
-
-# comment out the below to focus on just the fundamentals
-
-# after running
-# $ export FLASK_ENV=development; flask run
-# site will be available at 
-# http://localhost:5000
-
 def main():
     return render_template('main_better.html')
-
-# Show url matching
-
-# @app.route('/hello/')
-# def hello():
-#     return render_template('hello.html')
-
 
 
 @app.route('/view/')
@@ -72,35 +27,6 @@ def view():
     except:
         return render_template('view.html', error = True)
 
-
-# @app.route('/hello/<name>/')
-# def hello_name(name):
-#     return render_template('hello.html', name=name)
-
-# Page with form
-
-# @app.route('/ask/', methods=['POST', 'GET'])
-# def ask():
-#     if request.method == 'GET':
-#         return render_template('submit.html')
-#     else:
-#         try:
-#             return render_template('ask.html', name=request.form['name'], student=request.form['student'])
-#         except:
-#             return render_template('ask.html')
-
-# File uploads and interfacing with complex Python
-# basic version
-
-# @app.route('/submit-basic/', methods=['POST', 'GET'])
-# def submit_basic():
-#     if request.method == 'GET':
-#         return render_template('submit-basic.html')
-#     else:
-#         try:
-#             return render_template('submit-basic.html', thanks = True)
-#         except:
-#             return render_template('submit-basic.html', error=True)
 
 
 def get_auth_db():
@@ -127,6 +53,7 @@ def get_auth_db():
     cursor.execute(cmd)
     return g.message_db
 
+
 def insert_message(request):
     """
     input  : a request form that has user input information
@@ -138,7 +65,6 @@ def insert_message(request):
     handle  : the handle given by user
     message : the message given by user
     """
-
 
     # connect the database
     g.message_db = get_auth_db()
@@ -159,6 +85,7 @@ def insert_message(request):
     g.message_db.commit()
     g.message_db.close()
 
+
 # nontrivial version: makes a prediction and shows a viz
 @app.route('/submit-advanced/', methods=['POST', 'GET'])
 def submit():
@@ -172,7 +99,6 @@ def submit():
                                 message = request.form['message'])
         except:
             return render_template('submit.html', error = True)
-
 
 
 def random_messages(n):
