@@ -13,22 +13,6 @@ def main():
     return render_template('base.html')
 
 
-@app.route('/view/')
-def view():
-    """
-    input  : nothing
-    output : a webpage that can view some random messages with its handles
-
-    Return 5 mesages with handles if possible
-    """
-    try:
-        col = random_messages(5)
-        return render_template('view.html', fun = True, col = col)
-    except:
-        return render_template('view.html', error = True)
-
-
-
 def get_message_db():
     """
     input  : nothing
@@ -86,7 +70,7 @@ def insert_message(request):
     g.message_db.close()
 
 
-# nontrivial version: makes a prediction and shows a viz
+
 @app.route('/submit-advanced/', methods=['POST', 'GET'])
 def submit():
     if request.method == 'GET':
@@ -121,3 +105,17 @@ def random_messages(n):
     g.message_db.close()
     return col; 
 
+
+@app.route('/view/')
+def view():
+    """
+    input  : nothing
+    output : a webpage that can view some random messages with its handles
+
+    Return 5 mesages with handles if possible
+    """
+    try:
+        col = random_messages(5)
+        return render_template('view.html', fun = True, col = col)
+    except:
+        return render_template('view.html', error = True)
